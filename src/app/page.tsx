@@ -75,7 +75,7 @@ export default function HomePage() {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           {/* Pill badge */}
           <span className="inline-block bg-[#F59E0B]/90 text-[#1C1917] font-heading font-700 text-xs uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-6">
-            🍕 Bateau Bay, NSW · Since the Beginning
+            🍕 Bateau Bay, NSW · Family Owned Since 1989
           </span>
 
           {/* Business name */}
@@ -89,9 +89,9 @@ export default function HomePage() {
           </h1>
 
           <p className="text-white/90 text-lg sm:text-xl md:text-2xl font-body mt-4 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow">
-            Real pizza, real flavour, right here on the Central Coast.
+            The best pizza on the Coast — since 1989.
             <br className="hidden sm:block" />
-            Pick up or delivery — Tuesday through Sunday from 5pm.
+            Pick up or delivery · Tuesday through Sunday from 5pm.
           </p>
 
           {/* CTA buttons */}
@@ -160,10 +160,11 @@ export default function HomePage() {
               <span className="text-[#9B1C1C]">Institution</span>
             </h2>
             <p className="text-stone-700 text-lg leading-relaxed mb-4">
-              Tucked away on Bateau Bay Road, Bruce&apos;s Ozzie Pizza has been
-              the Central Coast&apos;s go-to local pizza spot for as long as most
-              locals can remember. We&apos;re talking proper pizzas — hand-topped,
-              made fresh, baked right — not some conveyor belt operation.
+              Tucked away on Bateau Bay Road (corner of The Entrance Road, near
+              the traffic lights), Bruce&apos;s Ozzie Pizza has been the Central
+              Coast&apos;s go-to local since 1989 — family owned, family run.
+              We&apos;re talking proper pizzas — hand-topped, made fresh, baked
+              right — not some conveyor belt operation.
             </p>
             <p className="text-stone-700 text-lg leading-relaxed mb-6">
               From the classic Ozzie (ham &amp; egg, true to its roots) to the
@@ -390,7 +391,7 @@ export default function HomePage() {
           </a>
           <div className="flex items-center justify-center gap-3 text-stone-400 text-sm">
             <Clock size={16} />
-            <span>Tue–Sun from 5pm · Mon Closed</span>
+            <span>Tue–Sun from 5pm · Mon Closed · 10% surcharge weekends &amp; public holidays</span>
           </div>
         </div>
       </section>

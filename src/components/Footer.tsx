@@ -17,11 +17,12 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm text-stone-400 leading-relaxed">
-            Serving the Bateau Bay community on the Central Coast since the
-            beginning. Real pizza, real people, real good.
+            Family owned and serving the Central Coast since 1989.
+            Real pizza, real people, real good.
           </p>
           <p className="mt-3 text-xs text-stone-500">
-            10% surcharge applies on Saturdays.
+            10% surcharge on weekends &amp; public holidays.
+            Delivery fee $5.00 · Min. order $26.00.
           </p>
         </div>
 
@@ -67,8 +68,7 @@ export default function Footer() {
             <li className="flex items-start gap-2">
               <Clock size={16} className="mt-0.5 shrink-0 text-[#F59E0B]" />
               <span>
-                Tue–Wed &amp; Sun: 5pm–9pm<br />
-                Thu: 5pm–9:30pm<br />
+                Tue–Thu &amp; Sun: 5pm–9pm<br />
                 Fri–Sat: 5pm–10pm<br />
                 Mon: Closed
               </span>

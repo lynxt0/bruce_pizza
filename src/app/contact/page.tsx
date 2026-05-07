@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, ExternalLink, CheckCircle2 } from "lucide-react";
+import { Phone, MapPin, Clock, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
@@ -12,10 +12,10 @@ const hours = [
   { day: "Monday", time: "Closed", closed: true },
   { day: "Tuesday", time: "5:00pm – 9:00pm", closed: false },
   { day: "Wednesday", time: "5:00pm – 9:00pm", closed: false },
-  { day: "Thursday", time: "5:00pm – 9:30pm", closed: false },
+  { day: "Thursday", time: "5:00pm – 9:00pm", closed: false },
   { day: "Friday", time: "5:00pm – 10:00pm", closed: false },
   { day: "Saturday", time: "5:00pm – 10:00pm", closed: false, surcharge: true },
-  { day: "Sunday", time: "5:00pm – 9:00pm", closed: false },
+  { day: "Sunday", time: "5:00pm – 9:00pm", closed: false, surcharge: true },
 ];
 
 /* Determine today's day of week for highlighting */
@@ -77,6 +77,9 @@ export default function ContactPage() {
                 <br />
                 Central Coast, Australia
               </address>
+              <p className="mt-2 text-sm text-stone-500 italic">
+                Near the traffic lights — corner of Bateau Bay Road &amp; The Entrance Road
+              </p>
               <a
                 href="https://maps.google.com/?q=2/213+Bateau+Bay+Road+Bateau+Bay+NSW+2261"
                 target="_blank"
@@ -107,6 +110,8 @@ export default function ContactPage() {
               <p className="text-stone-500 text-sm mt-2">
                 Call to order takeaway or delivery.
                 <br />
+                Delivery fee $5.00 · Minimum order $26.00
+                <br className="mt-1" />
                 We get busy on weekends — ring early to beat the rush!
               </p>
               {/* Big call button */}
@@ -119,31 +124,46 @@ export default function ContactPage() {
               </a>
             </div>
 
-            {/* Social / Facebook */}
+            {/* Social — Facebook + Instagram */}
             <div className="bg-white rounded-2xl p-6 shadow-md border border-stone-100">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#1877F2] rounded-xl p-3">
-                  {/* Facebook brand icon — inline SVG since lucide-react doesn't include brand icons */}
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <h2 className="font-heading font-700 text-[#1C1917] text-xl mb-4">
+                Follow Us
+              </h2>
+              <p className="text-stone-600 text-sm mb-5">
+                Follow us on Facebook &amp; Instagram for specials, updates and public holiday notices.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/p/Bruces-Ozzie-Pizza-100054455892013/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#1565C0] text-white font-heading font-700 text-sm uppercase tracking-widest px-4 py-3 rounded-full transition-colors"
+                >
+                  {/* Facebook brand icon — inline SVG */}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
-                </div>
-                <h2 className="font-heading font-700 text-[#1C1917] text-xl">
                   Facebook
-                </h2>
+                </a>
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Bruce's Ozzie Pizza on Instagram — find via QR code in store"
+                  className="flex-1 inline-flex items-center justify-center gap-2 text-white font-heading font-700 text-sm uppercase tracking-widest px-4 py-3 rounded-full transition-colors"
+                  style={{ background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)" }}
+                >
+                  {/* Instagram brand icon — inline SVG */}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="3.5"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+                  </svg>
+                  Instagram
+                </a>
               </div>
-              <p className="text-stone-600 text-sm mb-4">
-                Follow us on Facebook for updates, closures and specials.
-              </p>
-              <a
-                href="https://www.facebook.com/p/Bruces-Ozzie-Pizza-100054455892013/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#1565C0] text-white font-heading font-700 text-sm uppercase tracking-widest px-5 py-3 rounded-full transition-colors"
-              >
-                <ExternalLink size={16} />
-                Visit our Facebook Page
-              </a>
             </div>
 
             {/* Delivery & ordering notes */}
@@ -154,10 +174,12 @@ export default function ContactPage() {
               <ul className="space-y-3">
                 {[
                   "Takeaway & home delivery available",
+                  "Delivery fee: $5.00 · Minimum order: $26.00",
                   "Gluten free large pizza — $24.50",
-                  "10% surcharge applies on Saturdays",
+                  "10% surcharge on weekends & public holidays",
                   "4.4★ on Google — 673 reviews",
                   "Wheelchair accessible",
+                  "Family owned & established since 1989",
                 ].map((note) => (
                   <li key={note} className="flex items-start gap-2 text-stone-700 text-sm">
                     <CheckCircle2

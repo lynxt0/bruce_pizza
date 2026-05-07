@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Flame, Leaf, Star } from "lucide-react";
+import { Flame, Leaf, Star, Truck, Info } from "lucide-react";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Menu",
   description:
-    "Full menu for Bruce's Ozzie Pizza — pizzas, ribs, pasta, sides and special deals. Prices from $17.90. Gluten free available.",
+    "Full menu for Bruce's Ozzie Pizza — pizzas, ribs, pasta, drinks, sides and special deals. Prices from $17.90. Gluten free available. Est. 1989.",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   MENU DATA — sourced directly from the printed menu image
+   MENU DATA — sourced directly from printed menu (effective 9 Dec 2025)
 ════════════════════════════════════════════════════════════════════════════ */
+
+const softDrinks = [
+  "Pepsi",
+  "Pepsi Max",
+  "Solo",
+  "Sunkist",
+  "Lemonade",
+];
 
 const classicPizzas = [
   { name: "Ozzie", desc: "Ham & Egg" },
@@ -220,6 +228,24 @@ export default function MenuPage() {
         </div>
         <div className="checkered-border absolute bottom-0 left-0 right-0" aria-hidden="true" />
       </section>
+
+      {/* ── Delivery info banner ────────────────────────────────────────── */}
+      <div className="bg-[#1C1917] text-white py-3 px-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-1.5 text-sm text-stone-300">
+          <span className="flex items-center gap-1.5">
+            <Truck size={15} className="text-[#F59E0B] shrink-0" />
+            <strong className="text-white">Delivery fee:</strong>&nbsp;$5.00 per order
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Info size={15} className="text-[#F59E0B] shrink-0" />
+            <strong className="text-white">Minimum order:</strong>&nbsp;$26.00
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Info size={15} className="text-[#F59E0B] shrink-0" />
+            10% surcharge on weekends &amp; public holidays
+          </span>
+        </div>
+      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 space-y-20">
 
@@ -501,6 +527,49 @@ export default function MenuPage() {
           </div>
         </section>
 
+        {/* ── Drinks ────────────────────────────────────────────────────── */}
+        <section id="drinks">
+          <SectionHeader
+            title="Drinks"
+            subtitle="Chilled 1.25lt bottles — the perfect pairing with your order."
+          />
+          <div className="grid sm:grid-cols-2 gap-6">
+            {/* Soft drinks */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-stone-100">
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="font-heading font-700 text-[#1C1917] text-xl">
+                  1.25lt Bottles
+                </h3>
+                <div className="font-heading font-700 text-[#9B1C1C] text-3xl">
+                  $5.90
+                </div>
+              </div>
+              <ul className="divide-y divide-stone-100">
+                {softDrinks.map((drink) => (
+                  <li
+                    key={drink}
+                    className="py-2.5 text-stone-700 text-sm font-body"
+                  >
+                    {drink}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Water */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-stone-100 flex flex-col justify-between">
+              <div>
+                <h3 className="font-heading font-700 text-[#1C1917] text-xl mb-2">
+                  Water
+                </h3>
+                <p className="text-stone-500 text-sm">Still water bottle.</p>
+              </div>
+              <div className="font-heading font-700 text-[#9B1C1C] text-4xl mt-6">
+                $3.00
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Order prompt ──────────────────────────────────────────────── */}
         <section className="bg-[#9B1C1C] rounded-3xl p-8 sm:p-12 text-center text-white shadow-xl">
           <h2 className="font-heading font-700 text-3xl sm:text-4xl mb-3">
@@ -517,7 +586,7 @@ export default function MenuPage() {
             (02) 4334 1511
           </a>
           <p className="mt-4 text-white/60 text-sm">
-            Tue–Wed &amp; Sun: 5pm–9pm · Thu: 5pm–9:30pm · Fri–Sat: 5pm–10pm
+            Tue–Thu &amp; Sun: 5pm–9pm · Fri–Sat: 5pm–10pm · Mon: Closed
           </p>
         </section>
       </div>
