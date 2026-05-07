@@ -4,14 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Brand colour palette ───────────────────────────────────────────────── */
+/* ─── Brand design tokens — Bateau Bay Cellars ───────────────────────────── */
 @theme inline {
   /* Shadcn token pass-through */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: ui-monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,100 +46,175 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
 
-  /* ── Custom pizza brand tokens ── */
-  --color-brand-red: #9B1C1C;
-  --color-brand-red-light: #DC2626;
-  --color-brand-gold: #D97706;
-  --color-brand-gold-light: #F59E0B;
-  --color-brand-cream: #FFFBEB;
-  --color-brand-cream-dark: #FEF3C7;
-  --color-brand-charcoal: #1C1917;
+  /* ── Bateau Bay Cellars brand palette ──────────────────────────────────── */
+  /* Deep burgundy — primary brand colour, evokes wine and warmth */
+  --color-wine:        #5C1928;
+  --color-wine-light:  #7D2538;
+  --color-wine-dark:   #3D1019;
+
+  /* Forest green — cool cellar, verdant Central Coast */
+  --color-forest:      #1B3429;
+  --color-forest-light:#27493A;
+  --color-forest-dark: #0F1F18;
+
+  /* Warm amber / gold — label accent, candlelight warmth */
+  --color-gold:        #C08030;
+  --color-gold-light:  #D4993F;
+  --color-gold-dark:   #8C5C20;
+
+  /* Cream & stone — off-white backgrounds, breath of air */
+  --color-cream:       #F4EEE0;
+  --color-stone:       #E6DDD0;
+  --color-parchment:   #EAE3D2;
+
+  /* Charcoal & dark — rich near-black for dark sections */
+  --color-char:        #141210;
+  --color-char-soft:   #1E1B18;
+  --color-char-mid:    #2A2520;
+
+  /* Terracotta — earthy warmth, label pop */
+  --color-terra:       #B84C2A;
+  --color-terra-light: #CC6040;
+
+  /* Muted text colours */
+  --color-text-muted:  #8A7D70;
+  --color-text-warm:   #5A4F45;
 }
 
+/* ─── Root CSS variables (Shadcn compatibility) ──────────────────────────── */
 :root {
-  /* Warm cream base palette */
-  --background: oklch(0.99 0.01 90);       /* warm off-white */
-  --foreground: oklch(0.18 0.01 60);       /* warm near-black */
-  --card: oklch(0.97 0.015 85);
-  --card-foreground: oklch(0.18 0.01 60);
-  --popover: oklch(0.99 0.01 90);
-  --popover-foreground: oklch(0.18 0.01 60);
-  --primary: oklch(0.38 0.15 25);          /* deep red */
-  --primary-foreground: oklch(0.99 0.01 90);
-  --secondary: oklch(0.92 0.06 85);        /* warm cream */
-  --secondary-foreground: oklch(0.25 0.04 40);
-  --muted: oklch(0.93 0.03 80);
-  --muted-foreground: oklch(0.52 0.04 60);
-  --accent: oklch(0.72 0.17 65);           /* golden yellow */
-  --accent-foreground: oklch(0.18 0.01 60);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.04 80);
-  --input: oklch(0.90 0.03 80);
-  --ring: oklch(0.72 0.17 65);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.96 0.02 85);
-  --sidebar-foreground: oklch(0.18 0.01 60);
-  --sidebar-primary: oklch(0.38 0.15 25);
-  --sidebar-primary-foreground: oklch(0.99 0.01 90);
-  --sidebar-accent: oklch(0.92 0.06 85);
-  --sidebar-accent-foreground: oklch(0.25 0.04 40);
-  --sidebar-border: oklch(0.88 0.04 80);
-  --sidebar-ring: oklch(0.72 0.17 65);
-  --chart-1: oklch(0.38 0.15 25);
-  --chart-2: oklch(0.72 0.17 65);
-  --chart-3: oklch(0.55 0.12 40);
-  --chart-4: oklch(0.65 0.10 85);
-  --chart-5: oklch(0.80 0.08 70);
+  --radius: 0.5rem;
+  --background: #F4EEE0;
+  --foreground: #141210;
+  --card: #FFFFFF;
+  --card-foreground: #141210;
+  --popover: #FFFFFF;
+  --popover-foreground: #141210;
+  --primary: #5C1928;
+  --primary-foreground: #F4EEE0;
+  --secondary: #1B3429;
+  --secondary-foreground: #F4EEE0;
+  --muted: #E6DDD0;
+  --muted-foreground: #8A7D70;
+  --accent: #C08030;
+  --accent-foreground: #141210;
+  --destructive: #DC2626;
+  --border: #D4C9B8;
+  --input: #D4C9B8;
+  --ring: #5C1928;
+  --chart-1: #5C1928;
+  --chart-2: #1B3429;
+  --chart-3: #C08030;
+  --chart-4: #B84C2A;
+  --chart-5: #8A7D70;
+  --sidebar: #F4EEE0;
+  --sidebar-foreground: #141210;
+  --sidebar-primary: #5C1928;
+  --sidebar-primary-foreground: #F4EEE0;
+  --sidebar-accent: #E6DDD0;
+  --sidebar-accent-foreground: #5C1928;
+  --sidebar-border: #D4C9B8;
+  --sidebar-ring: #5C1928;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-body), system-ui, sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading), system-ui, sans-serif;
-    letter-spacing: 0.01em;
-  }
+/* ─── Base styles ────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
-/* ─── Utility classes for brand colours ──────────────────────────────────── */
-.bg-brand-red      { background-color: #9B1C1C; }
-.bg-brand-red-600  { background-color: #DC2626; }
-.bg-brand-gold     { background-color: #D97706; }
-.bg-brand-cream    { background-color: #FFFBEB; }
-.text-brand-red    { color: #9B1C1C; }
-.text-brand-gold   { color: #D97706; }
-.text-brand-cream  { color: #FFFBEB; }
-.border-brand-red  { border-color: #9B1C1C; }
-.border-brand-gold { border-color: #D97706; }
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  background-color: #F4EEE0;
+  color: #141210;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* ─── Hero gradient overlay ───────────────────────────────────────────────── */
-.hero-overlay {
+/* ─── Typography utilities ───────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-heading), Georgia, serif;
+}
+
+/* ─── Age verification overlay ───────────────────────────────────────────── */
+.age-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #141210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Cellar texture divider ─────────────────────────────────────────────── */
+.divider-gold {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #C08030 20%,
+    #C08030 80%,
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* ─── Gradient overlays ──────────────────────────────────────────────────── */
+.hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(28, 10, 5, 0.55) 0%,
-    rgba(155, 28, 28, 0.45) 50%,
-    rgba(28, 10, 5, 0.70) 100%
+    rgba(20, 18, 16, 0.45) 0%,
+    rgba(20, 18, 16, 0.65) 60%,
+    rgba(20, 18, 16, 0.85) 100%
   );
 }
 
-/* ─── Checkered border accent ─────────────────────────────────────────────── */
-.checkered-border {
-  background-image: repeating-conic-gradient(#9B1C1C 0% 25%, #FEF3C7 0% 50%);
-  background-size: 16px 16px;
-  height: 12px;
+.section-fade-up {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #141210 100%
+  );
 }
 
-/* ─── Section divider ─────────────────────────────────────────────────────── */
-.section-divider {
-  background: linear-gradient(90deg, transparent, #D97706, transparent);
-  height: 2px;
-  margin: 0 auto;
-  width: 80%;
+/* ─── Animated underline for nav links ───────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #C08030;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* ─── Product card hover lift ────────────────────────────────────────────── */
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(20, 18, 16, 0.18);
+}
+
+/* ─── Review quote styling ───────────────────────────────────────────────── */
+.review-quote::before {
+  content: "\201C";
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: #C08030;
+  opacity: 0.4;
+  display: block;
+  margin-bottom: -1.5rem;
 }
