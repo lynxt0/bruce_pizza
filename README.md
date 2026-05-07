@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bruce's Ozzie Pizza — Website
+
+Professional marketing website for **Bruce's Ozzie Pizza**, Bateau Bay NSW.  
+Built with Next.js (App Router) · Tailwind CSS · shadcn/ui · Vercel-ready.
+
+---
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home — hero, about blurb, deals preview, reviews, CTA |
+| `/menu` | Full menu — all sections, sizes, specials |
+| `/contact` | Address, phone, opening hours, Google Map embed |
+
+---
+
+## Stack
+
+- **Framework:** Next.js 16 (App Router, static export)
+- **Styling:** Tailwind CSS v4 + shadcn/ui components
+- **Fonts:** Oswald (headings) · Nunito (body) via `next/font/google`
+- **Icons:** lucide-react
+- **Deployment:** Vercel (zero config)
+
+---
 
 ## Getting Started
 
-First, run the development server:
+> Requires Node.js ≥ 20 (project uses Node 24 — see `.nvmrc`).
 
 ```bash
+# Use correct Node version (if you have nvm)
+nvm use
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Business Details
 
-## Learn More
+| | |
+|---|---|
+| **Address** | 2/213 Bateau Bay Road, Bateau Bay NSW 2261 |
+| **Phone** | (02) 4334 1511 |
+| **Hours** | Tue–Wed & Sun: 5–9pm · Thu: 5–9:30pm · Fri–Sat: 5–10pm · Mon: Closed |
+| **Surcharge** | 10% applies on Saturdays |
+| **Facebook** | [Bruce's Ozzie Pizza](https://www.facebook.com/p/Bruces-Ozzie-Pizza-100054455892013/) |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Placeholder Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The following images are **Unsplash placeholders** and should be replaced with real photos:
 
-## Deploy on Vercel
+- **Hero background** (`/` page): `https://images.unsplash.com/photo-1513104890138-7c749659a591`
+- **About section** (`/` page): `https://images.unsplash.com/photo-1574071318508-1cdbab80d002`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Real photos can be sourced from the [Facebook page](https://www.facebook.com/p/Bruces-Ozzie-Pizza-100054455892013/).  
+Update the `src` props on the `<Image>` components in `src/app/page.tsx`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Deploying to Vercel
+
+1. Push this repo to GitHub (already done — `bruce_pizza`)
+2. Go to [vercel.com](https://vercel.com) → New Project → Import from GitHub
+3. Select `bruce_pizza` → Deploy (no config needed)
+
+Custom domain can be added in the Vercel project settings.
+
+---
+
+## Maintenance Notes
+
+- **Menu prices/items:** Edit `src/app/menu/page.tsx` — all data is in plain arrays at the top of the file.
+- **Opening hours:** Edit the `hours` array in `src/app/contact/page.tsx`.
+- **Business info (phone, address):** Appears in `Navbar.tsx`, `Footer.tsx`, `contact/page.tsx` and `page.tsx` — search for `4334 1511` to find all instances.
+- **Google Map embed:** Update the iframe `src` in `contact/page.tsx` with a fresh embed URL from [Google Maps](https://maps.google.com) if needed.
