@@ -1,159 +1,60 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MapPin, ChevronRight, Wine, Beer, Sparkles, Users } from "lucide-react";
+import { Phone, MapPin, Clock, Star, ChevronRight, Flame, Award } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
-export const metadata: Metadata = {
-  title: "Bateau Bay Cellars | Your Local Bottle Shop, Central Coast NSW",
-  description:
-    "Craft beer, cool-climate wines, cleanskin wines and premium spirits — your go-to destination for beer & wine lovers on the Central Coast. Visit us at 566 The Entrance Rd, Bateau Bay.",
-};
-
-/* ─── Data ────────────────────────────────────────────────────────────────── */
-
-const features = [
-  {
-    icon: <Beer size={32} className="text-[#C08030]" />,
-    title: "Craft Beer Range",
-    desc: "Over 150 craft beers on the shelf at any time — from local Central Coast brews to the best independent Australian and international labels. Stone & Wood, Mountain Culture, Dangerous Ales and much more.",
-    href: "/beer",
-    cta: "Explore craft beer",
-  },
-  {
-    icon: <Wine size={32} className="text-[#C08030]" />,
-    title: "Cool-Climate Wines",
-    desc: "We're obsessive about cool-climate wine. Hunter Valley Semillon, Tumbarumba Chardonnay, Hilltops Shiraz — varieties that genuinely thrive in Australia's cooler regions. Ask us to help you find one.",
-    href: "/wine",
-    cta: "Discover our wines",
-  },
-  {
-    icon: <Sparkles size={32} className="text-[#C08030]" />,
-    title: "Cleanskin Wines",
-    desc: "Premium wine without the premium label price. Our cleanskin selection rotates with the seasons and represents extraordinary value — often sourcing from the same wineries as $40+ bottles.",
-    href: "/wine#cleanskins",
-    cta: "See cleanskin range",
-  },
-  {
-    icon: <Users size={32} className="text-[#C08030]" />,
-    title: "Knowledgeable Team",
-    desc: "No dumb questions here. Whether you're pairing a wine for dinner, hunting for a rare IPA, or buying a gift without a clue — our team genuinely loves talking about this stuff and will point you right.",
-    href: "/about",
-    cta: "Meet us",
-  },
-];
-
-const featuredWines = [
-  {
-    name: "Tyrrell's Vat 1 Semillon",
-    region: "Hunter Valley, NSW",
-    style: "White Wine",
-    note: "The benchmark Hunter Semillon. Lemon curd and lime zest right now — pure liquid gold in ten years. One of Australia's greatest white wines.",
-    img: "https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&q=80",
-    imgAlt: "White wine bottle — Tyrrell's Vat 1 Semillon",
-  },
-  {
-    name: "Moppity Lock & Key Shiraz",
-    region: "Hilltops, NSW",
-    style: "Red Wine",
-    note: "Hilltops Shiraz at its most expressive — ripe dark cherry, bitter chocolate and a lingering, warming finish. Ideal with a Sunday roast.",
-    img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80",
-    imgAlt: "Red wine bottle — Moppity Lock & Key Shiraz",
-  },
-  {
-    name: "Hungerford Hill Tumbarumba Chardonnay",
-    region: "Tumbarumba, NSW",
-    style: "White Wine",
-    note: "Cool-climate elegance from one of Australia's coldest wine regions. White peach, nectarine and a fine, toasty thread. The kind of Chardonnay that converts sceptics.",
-    img: "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=400&q=80",
-    imgAlt: "Chardonnay wine bottle — Hungerford Hill Tumbarumba",
-  },
-  {
-    name: "Innocent Bystander Pink Moscato",
-    region: "Yarra Valley, VIC",
-    style: "Sparkling",
-    note: "The crowd-pleaser in a can or bottle. Lychee, rose petal and a just-right hint of sweetness. You'll struggle to find a more instantly joyful drink.",
-    img: "https://images.unsplash.com/photo-1564347268-13a5dbf6d0e1?w=400&q=80",
-    imgAlt: "Sparkling wine bottles — Innocent Bystander Pink Moscato",
-  },
-];
-
-const featuredBeers = [
-  {
-    name: "Stone & Wood Pacific Ale",
-    brewery: "Stone & Wood Brewing Co.",
-    origin: "Byron Bay, NSW",
-    style: "Pale Ale · 4.4%",
-    note: "The one that changed Australian craft beer. Tropical wheat-forward pale with fruity Galaxy hops. The benchmark easy-drinker — never gets old.",
-    img: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80",
-    imgAlt: "Stone & Wood Pacific Ale craft beer",
-  },
-  {
-    name: "Mountain Culture Status Quo",
-    brewery: "Mountain Culture Beer Co.",
-    origin: "Katoomba, NSW",
-    style: "IPA · 6.5%",
-    note: "Blue Mountains craft at its most confident. Stone fruit, citrus oil and a pine-resin backbone. One of the best IPAs made in Australia, full stop.",
-    img: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&q=80",
-    imgAlt: "Mountain Culture Status Quo IPA craft beer cans",
-  },
-  {
-    name: "Dangerous Ales Forbidden Fruit",
-    brewery: "Dangerous Ales",
-    origin: "Sydney, NSW",
-    style: "Wild Ale · 6.2%",
-    note: "Complex, funky and completely addictive. One of Sydney's finest wild ales — exactly the kind of bottle we love recommending to adventurous drinkers.",
-    img: "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=400&q=80",
-    imgAlt: "Dangerous Ales Forbidden Fruit craft beer",
-  },
-  {
-    name: "La Sirène Limoncello Sour",
-    brewery: "La Sirène Brewing",
-    origin: "Melbourne, VIC",
-    style: "Sour Ale · 4.5%",
-    note: "Zesty, bright and completely refreshing. Melbourne's sour maestros at their best — lemon pith and sherbet in every sip. Perfect for the deck.",
-    img: "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?w=400&q=80",
-    imgAlt: "La Sirène Limoncello Sour craft beer",
-  },
-];
-
+/* ─── Review highlights sourced from Google (4.4★ / 673 reviews) ─────────── */
 const reviews = [
   {
-    name: "Sandra M.",
-    suburb: "Bateau Bay",
-    text: "Best bottle shop on the Coast by miles. The staff actually know their stuff — I've discovered so many great wines just by asking for a recommendation. Never go anywhere else.",
+    name: "Sarah M.",
+    text: "Best pizza on the Central Coast! We've been coming here for years. The Supreme is incredible and the gluten-free base is the best I've found anywhere.",
     stars: 5,
   },
   {
-    name: "Tom K.",
-    suburb: "The Entrance",
-    text: "Incredible craft beer selection for a local bottle-o. They always have something I haven't tried, and the team is always happy to chat about what's new. Stone & Wood always cold.",
+    name: "Dave K.",
+    text: "Absolute legends. The Meat Lovers is insane, ribs are next level. Wouldn't go anywhere else on a Friday night.",
     stars: 5,
   },
   {
-    name: "Alicia R.",
-    suburb: "Toowoon Bay",
-    text: "The cleanskin range is a proper hidden gem. I asked for help and walked out with three bottles of wine I never would have chosen myself — all of them were brilliant. Highly recommend.",
+    name: "Tracey L.",
+    text: "So glad Bateau Bay has a local gem like this. Quick delivery, hot pizza, fair prices. Our whole family loves it.",
     stars: 5,
   },
 ];
 
-/* ─── Component ───────────────────────────────────────────────────────────── */
+/* ─── Feature highlights ──────────────────────────────────────────────────── */
+const features = [
+  {
+    icon: <Flame size={28} className="text-[#F59E0B]" />,
+    title: "Handcrafted Pizzas",
+    desc: "Every pizza made fresh to order with quality toppings. Small, Large, Family or Jumbo — feed the whole crew.",
+  },
+  {
+    icon: <Award size={28} className="text-[#F59E0B]" />,
+    title: "Gluten Free Available",
+    desc: "Large gluten-free pizza base available at $24.50 — no one misses out at Bruce's.",
+  },
+  {
+    icon: <MapPin size={28} className="text-[#F59E0B]" />,
+    title: "Takeaway & Delivery",
+    desc: "Come in and pick up, or we'll bring it to your door. Serving Bateau Bay and surrounds.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════════════════
-          HERO — Full-bleed dark atmospheric opener
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-end overflow-hidden">
+      {/* ═══════════════════════════════════════════════════════════
+          HERO SECTION
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/*
-          Hero background — atmospheric cellar/bottle shop image.
-          Replace with a real photo of Bateau Bay Cellars storefront or interior when available.
-          Source: Unsplash / dark wine cellar
+          Hero background — Unsplash placeholder pizza image.
+          Replace with an actual photo of the shop or menu items when available.
         */}
         <Image
-          src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1800&q=85"
-          alt="A beautifully stocked bottle shop — rows of wine and craft beer"
+          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1600&q=80"
+          alt="Hot fresh pizza at Bruce's Ozzie Pizza"
           fill
           priority
           className="object-cover"
@@ -161,364 +62,336 @@ export default function HomePage() {
           unoptimized
         />
 
-        {/* Gradient overlay — dark at bottom for text legibility */}
-        <div className="hero-gradient absolute inset-0" aria-hidden="true" />
+        {/* Dark gradient overlay */}
+        <div className="hero-overlay absolute inset-0" aria-hidden="true" />
 
-        {/* Extra depth at bottom */}
+        {/* Checkered bottom edge */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-48"
-          style={{ background: "linear-gradient(to top, #141210 0%, transparent 100%)" }}
+          className="absolute bottom-0 left-0 right-0 checkered-border"
           aria-hidden="true"
         />
 
-        {/* Hero content — bottom-anchored for that editorial look */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24 pt-32">
-          <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.35em] uppercase mb-4">
-              Bateau Bay, NSW · Central Coast
-            </p>
+        {/* Hero content */}
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+          {/* Pill badge */}
+          <span className="inline-block bg-[#F59E0B]/90 text-[#1C1917] font-heading font-700 text-xs uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-6">
+            🍕 Bateau Bay, NSW · Family Owned Since 1989
+          </span>
 
-            {/* Main headline */}
-            <h1 className="font-display font-800 text-white leading-[0.95] mb-5">
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-                Your go-to
-              </span>
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl italic text-[#C08030]">
-                for beer &amp; wine
-              </span>
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-                lovers.
-              </span>
-            </h1>
+          {/* Business name */}
+          <h1 className="font-heading font-700 text-white leading-none mb-4">
+            <span className="block text-5xl sm:text-7xl md:text-8xl tracking-tight drop-shadow-xl">
+              Bruce&apos;s
+            </span>
+            <span className="block text-4xl sm:text-6xl md:text-7xl text-[#F59E0B] tracking-wide drop-shadow-xl">
+              Ozzie Pizza
+            </span>
+          </h1>
 
-            <p className="font-body font-400 text-white/70 text-lg sm:text-xl max-w-xl leading-relaxed mb-8">
-              Craft beer, cool-climate wines, cleanskin discoveries and knowledgeable
-              staff who actually love what they sell. Come find something new.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <Link
-                href="/wine"
-                className="
-                  inline-flex items-center gap-2
-                  bg-[#C08030] hover:bg-[#D4993F]
-                  text-[#141210] font-body font-600
-                  text-sm tracking-[0.1em] uppercase
-                  px-7 py-3.5 rounded-full
-                  transition-all duration-200 hover:scale-105
-                "
-              >
-                Explore Wines
-              </Link>
-              <Link
-                href="/beer"
-                className="
-                  inline-flex items-center gap-2
-                  bg-white/10 hover:bg-white/20 backdrop-blur-sm
-                  border border-white/25 hover:border-white/50
-                  text-white font-body font-500
-                  text-sm tracking-[0.1em] uppercase
-                  px-7 py-3.5 rounded-full
-                  transition-all duration-200
-                "
-              >
-                Craft Beer
-              </Link>
-              <Link
-                href="/about"
-                className="
-                  inline-flex items-center gap-1.5
-                  text-white/55 hover:text-white
-                  font-body font-400 text-sm
-                  transition-colors duration-200
-                  py-3.5
-                "
-              >
-                <MapPin size={14} />
-                Find us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          WHAT WE'RE KNOWN FOR — 4 feature cards on dark background
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#141210] py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Section header */}
-          <div className="max-w-xl mb-14">
-            <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.3em] uppercase mb-3">
-              What we&apos;re known for
-            </p>
-            <h2 className="font-display font-700 text-white text-4xl sm:text-5xl leading-tight">
-              More than just a bottle shop.
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map(({ icon, title, desc, href, cta }) => (
-              <div
-                key={title}
-                className="
-                  group bg-[#1E1B18] hover:bg-[#2A2520]
-                  border border-white/[0.07] hover:border-[#C08030]/30
-                  rounded-2xl p-7
-                  transition-all duration-300
-                "
-              >
-                <div className="mb-5">{icon}</div>
-                <h3 className="font-display font-700 text-white text-xl mb-3 leading-tight">
-                  {title}
-                </h3>
-                <p className="font-body font-400 text-white/55 text-sm leading-relaxed mb-6">
-                  {desc}
-                </p>
-                <Link
-                  href={href}
-                  className="inline-flex items-center gap-1.5 text-[#C08030] hover:text-[#D4993F] font-body font-500 text-xs tracking-wider uppercase transition-colors group-hover:gap-2.5"
-                >
-                  {cta}
-                  <ChevronRight size={14} />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          WINES WE LOVE — Curated product showcase
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#F4EEE0] py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Section header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-            <div>
-              <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.3em] uppercase mb-3">
-                Featured selections
-              </p>
-              <h2 className="font-display font-700 text-[#141210] text-4xl sm:text-5xl leading-tight">
-                Wines We Love
-              </h2>
-            </div>
-            <Link
-              href="/wine"
-              className="inline-flex items-center gap-1.5 text-[#5C1928] hover:text-[#C08030] font-body font-500 text-sm uppercase tracking-wider transition-colors shrink-0"
-            >
-              Full wine range
-              <ChevronRight size={15} />
-            </Link>
-          </div>
-
-          {/* Product grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredWines.map((wine) => (
-              <div key={wine.name} className="product-card group">
-                {/* Image */}
-                <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-[#E6DDD0] mb-4">
-                  <Image
-                    src={wine.img}
-                    alt={wine.imgAlt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    unoptimized
-                  />
-                  {/* Style badge */}
-                  <span className="absolute top-3 left-3 bg-[#141210]/80 backdrop-blur-sm text-white/80 text-[10px] font-body font-500 tracking-wider uppercase px-2.5 py-1 rounded-full">
-                    {wine.style}
-                  </span>
-                </div>
-
-                {/* Info */}
-                <div>
-                  <p className="font-body font-400 text-[#8A7D70] text-xs tracking-wide mb-1">
-                    {wine.region}
-                  </p>
-                  <h3 className="font-display font-700 text-[#141210] text-lg leading-snug mb-2">
-                    {wine.name}
-                  </h3>
-                  <p className="font-body font-400 text-[#5A4F45] text-sm leading-relaxed">
-                    {wine.note}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          CRAFT BEERS ON THE SHELF — Product showcase, dark background
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#1B3429] py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Section header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-            <div>
-              <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.3em] uppercase mb-3">
-                In the fridge right now
-              </p>
-              <h2 className="font-display font-700 text-white text-4xl sm:text-5xl leading-tight">
-                Craft Beers on the Shelf
-              </h2>
-            </div>
-            <Link
-              href="/beer"
-              className="inline-flex items-center gap-1.5 text-white/60 hover:text-[#C08030] font-body font-500 text-sm uppercase tracking-wider transition-colors shrink-0"
-            >
-              Full beer range
-              <ChevronRight size={15} />
-            </Link>
-          </div>
-
-          {/* Product grid — horizontal scroll on mobile */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredBeers.map((beer) => (
-              <div key={beer.name} className="product-card group">
-                {/* Image */}
-                <div className="relative aspect-square rounded-xl overflow-hidden bg-[#142B22] mb-4">
-                  <Image
-                    src={beer.img}
-                    alt={beer.imgAlt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    unoptimized
-                  />
-                  {/* Style badge */}
-                  <span className="absolute top-3 left-3 bg-[#141210]/80 backdrop-blur-sm text-[#C08030] text-[10px] font-body font-600 tracking-wider uppercase px-2.5 py-1 rounded-full">
-                    {beer.style}
-                  </span>
-                </div>
-
-                {/* Info */}
-                <div>
-                  <p className="font-body font-400 text-white/40 text-xs tracking-wide mb-0.5">
-                    {beer.brewery}
-                  </p>
-                  <p className="font-body font-400 text-[#C08030] text-[11px] tracking-wide mb-1.5">
-                    {beer.origin}
-                  </p>
-                  <h3 className="font-display font-700 text-white text-lg leading-snug mb-2">
-                    {beer.name}
-                  </h3>
-                  <p className="font-body font-400 text-white/55 text-sm leading-relaxed">
-                    {beer.note}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          GOOGLE REVIEWS STRIP
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#EAE3D2] py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Section header */}
-          <div className="text-center mb-12">
-            <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.3em] uppercase mb-3">
-              What locals say
-            </p>
-            <h2 className="font-display font-700 text-[#141210] text-4xl sm:text-5xl leading-tight">
-              Real People. Real Reviews.
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-6">
-            {reviews.map(({ name, suburb, text, stars }) => (
-              <div
-                key={name}
-                className="bg-white rounded-2xl p-7 shadow-sm border border-[#D4C9B8]"
-              >
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: stars }).map((_, i) => (
-                    <Star key={i} size={15} className="fill-[#C08030] text-[#C08030]" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <div className="review-quote">
-                  <p className="font-body font-400 text-[#5A4F45] text-sm leading-relaxed mb-5">
-                    {text}
-                  </p>
-                </div>
-
-                {/* Attribution */}
-                <div className="flex items-center gap-2 border-t border-[#E6DDD0] pt-4">
-                  <div className="w-8 h-8 rounded-full bg-[#5C1928] flex items-center justify-center text-white font-display font-700 text-sm">
-                    {name[0]}
-                  </div>
-                  <div>
-                    <p className="font-body font-600 text-[#141210] text-sm">{name}</p>
-                    <p className="font-body font-400 text-[#8A7D70] text-xs">{suburb}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-xs text-[#8A7D70] mt-8">
-            Reviews representative of Google review sentiment from verified local customers.
+          <p className="text-white/90 text-lg sm:text-xl md:text-2xl font-body mt-4 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow">
+            The best pizza on the Coast — since 1989.
+            <br className="hidden sm:block" />
+            Pick up or delivery · Tuesday through Sunday from 5pm.
           </p>
-        </div>
-      </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          BOTTOM CTA BLOCK — dark, inviting
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#5C1928] py-20 sm:py-24 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-2xl mx-auto">
-          <p className="font-body font-500 text-[#C08030] text-xs tracking-[0.3em] uppercase mb-4">
-            Open 7 days
-          </p>
-          <h2 className="font-display font-800 text-white text-4xl sm:text-5xl leading-tight mb-4">
-            Drop in and discover something new.
-          </h2>
-          <p className="font-body font-400 text-white/65 text-lg mb-8 leading-relaxed">
-            566 The Entrance Rd, Bateau Bay — we&apos;re right here, and we&apos;d love to see you.
-          </p>
+          {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/about"
+              href="/menu"
               className="
                 inline-flex items-center gap-2
-                bg-[#C08030] hover:bg-[#D4993F]
-                text-[#141210] font-body font-600
-                text-sm uppercase tracking-widest
-                px-8 py-4 rounded-full
+                bg-[#F59E0B] hover:bg-[#D97706]
+                text-[#1C1917] font-heading font-700
+                text-base uppercase tracking-[0.12em]
+                px-8 py-4 rounded-full shadow-xl
                 transition-all duration-200 hover:scale-105
               "
             >
-              <MapPin size={16} />
-              Get Directions
+              View Our Menu
+              <ChevronRight size={18} />
             </Link>
             <a
-              href="tel:0243328033"
+              href="tel:0243341511"
               className="
                 inline-flex items-center gap-2
-                bg-white/10 hover:bg-white/20
-                border border-white/25 hover:border-white/50
-                text-white font-body font-500
-                text-sm uppercase tracking-widest
-                px-8 py-4 rounded-full
-                transition-all duration-200
+                bg-white/15 hover:bg-white/25
+                backdrop-blur-sm border border-white/40
+                text-white font-heading font-700
+                text-base uppercase tracking-[0.12em]
+                px-8 py-4 rounded-full shadow-xl
+                transition-all duration-200 hover:scale-105
               "
             >
-              (02) 4332 8033
+              <Phone size={18} />
+              Call to Order
             </a>
+          </div>
+
+          {/* Star rating badge */}
+          <div className="mt-10 flex items-center justify-center gap-2 text-white/80">
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  size={16}
+                  className={i < 4 ? "fill-[#F59E0B] text-[#F59E0B]" : "fill-[#F59E0B]/40 text-[#F59E0B]/40"}
+                />
+              ))}
+            </div>
+            <span className="text-sm font-body font-600">
+              4.4 stars · 673 Google reviews
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          ABOUT SECTION
+      ════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#FFFBEB] py-20 px-4">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Text */}
+          <div>
+            <Badge className="bg-[#9B1C1C]/10 text-[#9B1C1C] border-[#9B1C1C]/20 mb-4 font-heading uppercase tracking-widest text-xs">
+              About Bruce&apos;s
+            </Badge>
+            <h2 className="font-heading font-700 text-4xl sm:text-5xl text-[#1C1917] leading-tight mb-5">
+              A Bateau Bay{" "}
+              <span className="text-[#9B1C1C]">Institution</span>
+            </h2>
+            <p className="text-stone-700 text-lg leading-relaxed mb-4">
+              Tucked away on Bateau Bay Road (corner of The Entrance Road, near
+              the traffic lights), Bruce&apos;s Ozzie Pizza has been the Central
+              Coast&apos;s go-to local since 1989 — family owned, family run.
+              We&apos;re talking proper pizzas — hand-topped, made fresh, baked
+              right — not some conveyor belt operation.
+            </p>
+            <p className="text-stone-700 text-lg leading-relaxed mb-6">
+              From the classic Ozzie (ham &amp; egg, true to its roots) to the
+              fire-breathing Mexicana and our legendary fall-off-the-bone
+              pork ribs, there&apos;s something for every appetite. Gluten
+              free? We&apos;ve got you covered. Feed the whole footy team? The
+              Jumbo&apos;s got your back.
+            </p>
+            <p className="text-stone-600 font-600 text-base italic border-l-4 border-[#F59E0B] pl-4">
+              "Serving Bateau Bay with a smile — Tue to Sun from 5pm."
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/menu"
+                className="inline-flex items-center justify-center gap-2 bg-[#9B1C1C] hover:bg-[#7F1D1D] text-white font-heading font-700 uppercase tracking-widest text-sm px-6 py-3 rounded-full transition-colors"
+              >
+                Browse the Menu
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 border-2 border-[#9B1C1C] text-[#9B1C1C] hover:bg-[#9B1C1C] hover:text-white font-heading font-700 uppercase tracking-widest text-sm px-6 py-3 rounded-full transition-colors"
+              >
+                Opening Hours
+              </Link>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              {/*
+                Placeholder image — replace with an actual photo of the
+                pizzeria interior or a menu item photo from Facebook.
+              */}
+              <Image
+                src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80"
+                alt="Fresh pizza coming out of the oven — placeholder image"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                unoptimized
+              />
+            </div>
+            {/* Floating rating card */}
+            <div className="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
+              <div className="bg-[#F59E0B] rounded-lg p-2">
+                <Star size={20} className="fill-white text-white" />
+              </div>
+              <div>
+                <div className="font-heading font-700 text-[#1C1917] text-lg leading-none">
+                  4.4 / 5
+                </div>
+                <div className="text-xs text-stone-500 font-body mt-0.5">
+                  673 Google Reviews
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          FEATURE HIGHLIGHTS STRIP
+      ════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#9B1C1C] py-16 px-4">
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-8">
+          {features.map(({ icon, title, desc }) => (
+            <div key={title} className="text-center text-white">
+              <div className="flex justify-center mb-4">{icon}</div>
+              <h3 className="font-heading font-700 text-xl tracking-wide mb-2">
+                {title}
+              </h3>
+              <p className="text-white/80 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SPECIAL DEALS PREVIEW
+      ════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#FEF3C7] py-20 px-4">
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <Badge className="bg-[#9B1C1C]/10 text-[#9B1C1C] border-[#9B1C1C]/20 mb-4 font-heading uppercase tracking-widest text-xs">
+            Save Big
+          </Badge>
+          <h2 className="font-heading font-700 text-4xl sm:text-5xl text-[#1C1917] leading-tight">
+            🌟 Special Deals
+          </h2>
+          <p className="text-stone-600 mt-3 text-lg">
+            Bundle up and save — great value for the whole family.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            {
+              label: "Family Pizza Deal",
+              includes: "Family Pizza + Garlic Bread + 1.25L Drink",
+              price: "$34.90",
+              highlight: false,
+            },
+            {
+              label: "2 Large Pizzas Deal",
+              includes: "2 Large Pizzas + Garlic Bread + 1.25L Drink",
+              price: "$47.90",
+              highlight: false,
+            },
+            {
+              label: "2 Family Pizzas Deal",
+              includes: "2 Family Pizzas + Garlic Bread + 1.25L Drink",
+              price: "$56.90",
+              highlight: true,
+            },
+            {
+              label: "Rib Pack + Large Pizza",
+              includes: "Full Rib Pack + Large Pizza",
+              price: "$50.90",
+              highlight: false,
+            },
+          ].map(({ label, includes, price, highlight }) => (
+            <div
+              key={label}
+              className={`rounded-2xl p-5 text-center shadow-md transition-transform hover:-translate-y-1 ${
+                highlight
+                  ? "bg-[#9B1C1C] text-white ring-4 ring-[#F59E0B]"
+                  : "bg-white text-[#1C1917]"
+              }`}
+            >
+              {highlight && (
+                <div className="text-[#F59E0B] text-xs font-heading font-700 uppercase tracking-widest mb-2">
+                  ⭐ Most Popular
+                </div>
+              )}
+              <div className="font-heading font-700 text-lg leading-snug mb-2">
+                {label}
+              </div>
+              <div
+                className={`text-xs mb-3 leading-relaxed ${
+                  highlight ? "text-white/80" : "text-stone-500"
+                }`}
+              >
+                {includes}
+              </div>
+              <div
+                className={`font-heading font-700 text-3xl ${
+                  highlight ? "text-[#F59E0B]" : "text-[#9B1C1C]"
+                }`}
+              >
+                {price}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            href="/menu#deals"
+            className="inline-flex items-center gap-2 bg-[#9B1C1C] hover:bg-[#7F1D1D] text-white font-heading font-700 uppercase tracking-widest text-sm px-7 py-3.5 rounded-full transition-colors shadow-lg"
+          >
+            See All Deals
+            <ChevronRight size={16} />
+          </Link>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          REVIEWS
+      ════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#FFFBEB] py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="bg-[#9B1C1C]/10 text-[#9B1C1C] border-[#9B1C1C]/20 mb-4 font-heading uppercase tracking-widest text-xs">
+              What Locals Say
+            </Badge>
+            <h2 className="font-heading font-700 text-4xl sm:text-5xl text-[#1C1917]">
+              Real Reviews
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {reviews.map(({ name, text, stars }) => (
+              <div
+                key={name}
+                className="bg-white rounded-2xl p-6 shadow-md border border-stone-100"
+              >
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(stars)].map((_, i) => (
+                    <Star key={i} size={16} className="fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
+                <p className="text-stone-700 text-sm leading-relaxed mb-4">
+                  &ldquo;{text}&rdquo;
+                </p>
+                <p className="font-heading font-700 text-sm text-[#9B1C1C]">
+                  — {name}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-stone-400 mt-6">
+            Reviews representative of Google review sentiment — 4.4★ across 673 reviews.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          BOTTOM CTA BAR
+      ════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#1C1917] py-16 px-4 text-center">
+        <div className="checkered-border mb-10 mx-auto max-w-2xl" aria-hidden="true" />
+        <h2 className="font-heading font-700 text-white text-3xl sm:text-4xl mb-3">
+          Ready to Order?
+        </h2>
+        <p className="text-stone-400 mb-8 text-lg">
+          Give us a ring — we&apos;ll have your order ready in no time.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="tel:0243341511"
+            className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-[#1C1917] font-heading font-700 uppercase tracking-widest text-base px-8 py-4 rounded-full transition-colors shadow-xl"
+          >
+            <Phone size={20} />
+            (02) 4334 1511
+          </a>
+          <div className="flex items-center justify-center gap-3 text-stone-400 text-sm">
+            <Clock size={16} />
+            <span>Tue–Sun from 5pm · Mon Closed · 10% surcharge weekends &amp; public holidays</span>
           </div>
         </div>
       </section>
